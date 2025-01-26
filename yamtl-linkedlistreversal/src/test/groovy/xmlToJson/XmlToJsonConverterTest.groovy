@@ -21,11 +21,17 @@ class XmlToJsonConverterTest extends YAMTLModule {
     def void testXmlToJsonConversion() {
         // model transformation execution example
         def xmlInputRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/xmlinput.ecore') as Resource
+		println("xml input loaded")
         def jsonOutputRes = YAMTLModule.preloadMetamodel(BASE_PATH + '/jsonoutput.ecore') as Resource
+		println("json output loaded")
         def xform = new XmlToJsonConverter(xmlInputRes.contents[0] as EPackage, jsonOutputRes.contents[0] as EPackage)
-        xform.loadInputModels(['in': BASE_PATH + '/example.xml'])
+		println("xform loaded")
+        xform.loadInputModels(['xml': BASE_PATH + '/example.xml'])
+		println("xml input model loaded")
         xform.execute()
-        xform.saveOutputModels(['out': BASE_PATH + '/example.json'])
+		println("xform executed")
+        xform.saveOutputModels(['json': BASE_PATH + '/example.json'])
+		println("output model saved")
 
 //        // test assertion
 //        def actualModel = xform.getOutputModel('out')

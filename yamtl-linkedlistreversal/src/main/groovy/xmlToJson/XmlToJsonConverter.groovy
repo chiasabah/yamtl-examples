@@ -12,11 +12,12 @@ import groovy.xml.XmlSlurper
 class XmlToJsonConverter extends YAMTLModuleGroovy {
 
     public XmlToJsonConverter(EPackage inPk, EPackage outPk) {
+		println("executed 1")
         header().in('xml', inPk).out('json', outPk)
-
+		println("executed 2")
         ruleStore([
-            rule('XmlRoot2Json')
-                .in('root')
+            rule('xml2json')
+                .in('row')
                 .filter { it.name() == 'root' }
                 .query()
                 .endWith({
