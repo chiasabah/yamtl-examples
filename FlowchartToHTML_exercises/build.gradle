@@ -1,0 +1,13 @@
+plugins {
+	id 'groovy'
+}
+
+eclipse.project.name = 'yamtl.examples.FlowchartToHTML_exercises'
+eclipse.project.buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
+
+
+dependencies {
+	implementation 'org.apache.groovy:groovy-all:4.0.15'
+	implementation "yamtl:yamtl.groovy:$yamtlVersion"
+}
+

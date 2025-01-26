@@ -1,0 +1,38 @@
+plugins {
+	id "org.xtext.xtend" version "3.0.2"
+}
+
+eclipse.project.name = 'yamtl.examples.cd2db.incr.xtend'
+eclipse.project.natures(
+	'org.eclipse.xtext.ui.shared.xtextNature',
+    'org.eclipse.pde.PluginNature')
+	
+// XTEND: configures output directories for generated java
+xtend {
+	sourceSets {
+		main.xtendOutputDir = 'src/main/xtend-gen'
+		test.xtendOutputDir = 'src/test/xtend-gen'
+	}
+}
+
+sourceSets {
+	main {
+		java {
+			srcDirs = [
+				'src/main/java',
+				'src/main/emf-gen',
+				'src/main/xtend-gen'
+			]
+		}
+	}
+	test{
+		java {
+			srcDirs = [
+				'src/test/java',
+				'src/test/xtend-gen'
+			]	
+		}
+	}
+}	
+
+

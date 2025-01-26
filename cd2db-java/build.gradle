@@ -1,0 +1,16 @@
+eclipse.project.name = 'yamtl.examples.cd2db.java'
+
+repositories {
+	maven {
+		url "https://maven.pkg.github.com/ATL-Research/*"
+		credentials {
+			username = project.findProperty("gpr.user") ?: System.getenv("GITHUB_ACTOR")
+			password = project.findProperty("gpr.token") ?: System.getenv("GITHUB_TOKEN")
+		}
+	}
+}
+
+dependencies {
+	implementation 'io.github.atlresearch:emfmodelfuzzer:+'
+	implementation 'io.github.atlresearch.ttc2023:solutiondriver:0.5'
+}

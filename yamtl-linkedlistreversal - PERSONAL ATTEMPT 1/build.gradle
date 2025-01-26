@@ -1,0 +1,51 @@
+plugins {
+id 'groovy'
+id 'java'
+id 'eclipse'
+}
+
+eclipse {
+project {
+name = 'yamtl.examples.linkedlistreversal'
+buildCommand 'org.codehaus.groovy.eclipse.core.groovyBuilder'
+buildCommand 'org.eclipse.jdt.core.javabuilder'
+buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
+natures 'org.codehaus.groovy.eclipse.groovyNature'
+natures 'org.eclipse.jdt.core.javanature'
+natures 'org.eclipse.buildship.core.gradleprojectnature'
+}
+}
+
+repositories {
+maven { url "https://github.com/yamtl/yamtl.github.io/raw/master/mvn-repo/snapshot-repo" }
+mavenCentral()
+}
+
+ext {
+yamtlVersion = "1.0.5"
+}
+
+dependencies {
+implementation 'org.apache.groovy:groovy-all:4.0.15'
+implementation "yamtl:yamtl.groovy:${yamtlVersion}"
+implementation "yamtl:yamtl:${yamtlVersion}"
+implementation "yamtl:yamtl.flexible-models:${yamtlVersion}"
+implementation "org.eclipse.xtend:org.eclipse.xtend.core:2.31.0"
+implementation "org.eclipse.emf:org.eclipse.emf.ecore:2.34.0"
+implementation "org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.17.0"
+implementation "org.eclipse.emf:org.eclipse.emf.ecore.change:2.14.0"
+implementation 'org.springframework.boot:spring-boot-starter-aop:3.1.0'
+testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.3'
+testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+}
+
+sourceCompatibility = 17
+
+test {
+useJUnitPlatform()
+}
+
+task junit4Test(type: Test) {
+useJUnit()
+}

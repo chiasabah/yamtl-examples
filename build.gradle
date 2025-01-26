@@ -1,0 +1,54 @@
+allprojects {	
+	repositories {
+        maven { url "https://github.com/yamtl/yamtl.github.io/raw/master/mvn-repo/snapshot-repo" }
+		mavenCentral()
+	}
+
+}
+
+subprojects{
+
+    apply plugin: 'java'
+    apply plugin: 'eclipse'
+    apply plugin: 'idea'
+
+    sourceCompatibility = 17
+
+	ext {
+		yamtlVersion = "1.0.5"
+	}
+	
+    eclipse {
+        project {
+	        buildCommand 'org.eclipse.jdt.core.javabuilder'
+	        buildCommand 'org.eclipse.buildship.core.gradleprojectbuilder'
+	        buildCommand 'org.eclipse.wst.common.project.facet.core.builder'
+	
+	        natures 'org.eclipse.jdt.core.javanature',
+	            'org.eclipse.buildship.core.gradleprojectnature',
+	            'org.eclipse.wst.common.project.facet.core.nature'
+        }
+    }
+
+    dependencies {
+        implementation "yamtl:yamtl:$yamtlVersion"
+        implementation "yamtl:yamtl.flexible-models:$yamtlVersion"
+        implementation "org.eclipse.xtend:org.eclipse.xtend.core:2.31.0"
+        implementation "org.eclipse.emf:org.eclipse.emf.ecore:2.34.0"
+        implementation "org.eclipse.emf:org.eclipse.emf.ecore.xmi:2.17.0"
+        implementation "org.eclipse.emf:org.eclipse.emf.ecore.change:2.14.0"
+        implementation 'org.springframework.boot:spring-boot-starter-aop:3.1.0'
+		testImplementation 'org.junit.jupiter:junit-jupiter-api:5.9.3'
+		testImplementation 'org.junit.jupiter:junit-jupiter-params:5.9.3'
+		testRuntimeOnly 'org.junit.jupiter:junit-jupiter-engine:5.9.3'
+    }
+
+    test {
+        useJUnitPlatform()
+    }
+
+    task junit4Test(type: Test) {
+        useJUnit()
+    }
+}
+

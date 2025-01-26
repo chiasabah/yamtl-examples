@@ -1,0 +1,290 @@
+@namespace(uri="HTML", prefix="html")
+package HTML;
+
+class HTML {
+	val HEAD#html head;
+	val BODY#html body;
+}
+
+class HTMLElement {
+	attr String value;
+	val HTMLElement[*] children;
+}
+
+class HEAD extends HTMLElement {
+	val HEADElement[*]#head headElements;
+	ref HTML#head html;
+}
+
+abstract class HEADElement extends HTMLElement {
+	ref HEAD#headElements head;
+}
+
+class LINK extends HEADElement {
+	attr String rel;
+	attr String title;
+	attr String ahref;
+	attr String type;
+}
+
+class TITLE extends HEADElement {
+}
+
+class BODY extends HTMLElement {
+	attr String background;
+	attr String bgcolor;
+	attr String text;
+	attr String link;
+	attr String alink;
+	attr String vlink;
+	val BODYElement[*] bodyElements;
+	ref HTML#body html;
+}
+
+abstract class BODYElement extends HTMLElement {
+}
+
+class H1 extends BODYElement {
+}
+
+class H2 extends BODYElement {
+}
+
+class H3 extends BODYElement {
+}
+
+class H4 extends BODYElement {
+}
+
+class EM extends BODYElement {
+}
+
+class STRONG extends BODYElement {
+}
+
+class B extends BODYElement {
+}
+
+class I extends BODYElement {
+}
+
+class TT extends BODYElement {
+}
+
+class PRE extends BODYElement {
+}
+
+class BIG extends BODYElement {
+}
+
+class SMALL extends BODYElement {
+}
+
+class SUB extends BODYElement {
+}
+
+class SUP extends BODYElement {
+}
+
+class STRIKE extends BODYElement {
+}
+
+class FONT extends BODYElement {
+	attr String color;
+	attr String face;
+	attr String size;
+}
+
+class IMG extends BODYElement {
+	attr String src;
+	attr String width;
+	attr String height;
+	attr String alt;
+	attr String align;
+	attr String vspace;
+	attr String hspace;
+	attr String ismap;
+	attr String usemap;
+	attr String border;
+}
+
+class BR extends BODYElement {
+	attr String clear;
+}
+
+class MAP extends BODYElement {
+}
+
+class AREA extends BODYElement {
+	attr String shape;
+	attr String coords;
+	attr String ahref;
+}
+
+class STYLE extends BODYElement {
+}
+
+class EMBED extends BODYElement {
+	attr String src;
+	attr String width;
+	attr String height;
+	attr String align;
+	attr String vspace;
+	attr String hspace;
+	attr String border;
+}
+
+class NOEMBED extends BODYElement {
+}
+
+class SPAN extends BODYElement {
+	attr String style;
+}
+
+class A extends BODYElement {
+	attr String ahref;
+	attr String name;
+	attr String ~id;
+}
+
+class DIV extends BODYElement {
+	attr String align;
+}
+
+class P extends BODYElement {
+}
+
+abstract class TABLEElement extends BODYElement {
+	attr String bgcolor;
+	attr String background;
+}
+
+class TABLE extends TABLEElement {
+	attr String border;
+	attr String width;
+	attr String cellspacing;
+	attr String cellpadding;
+	val TR[*]#table trs;
+}
+
+class TR extends TABLEElement {
+	attr String valign;
+	attr String align;
+	ref TABLE#trs table;
+	val TD[*]#tr tds;
+}
+
+class TD extends TABLEElement {
+	attr String colspan;
+	attr String rowspan;
+	attr String valign;
+	attr String align;
+	attr String width;
+	ref TR#tds tr;
+}
+
+class TH extends TD {
+}
+
+class FORM {
+	attr String action;
+	attr String method;
+}
+
+class INPUT {
+	attr String align;
+	attr String maxlength;
+	attr String size;
+	attr String checked;
+	attr String src;
+	attr String inputValue;
+	attr String name;
+	attr String type;
+}
+
+class TEXTAREA {
+	attr String name;
+	attr String rows;
+	attr String cols;
+}
+
+class SELECT {
+	attr String multiple;
+	attr String size;
+	attr String name;
+}
+
+class OPTION {
+	attr String selected;
+	attr String optionValue;
+}
+
+abstract class ListElement {
+	attr String type;
+}
+
+class OL extends ListElement {
+	attr String start;
+}
+
+class UL extends ListElement {
+}
+
+class LI extends ListElement {
+	attr String liValue;
+}
+
+class DL {
+}
+
+class DT {
+}
+
+class DD {
+}
+
+class APPLET {
+	attr String applet;
+	attr String ~class;
+	attr String src;
+	attr String align;
+	attr String width;
+	attr String height;
+}
+
+class PARAM {
+	attr String name;
+	attr String paramValue;
+}
+
+class OBJECT {
+	attr String classid;
+	attr String ~id;
+	attr String data;
+	attr String type;
+	attr String standby;
+}
+
+class FRAMESET {
+	attr String rows;
+	attr String cols;
+	attr String framespacing;
+	attr String frameborder;
+	attr String border;
+}
+
+class FRAME {
+	attr String src;
+	attr String name;
+	attr String marginwidth;
+	attr String marginheight;
+	attr String scrolling;
+	attr String noresize;
+}
+
+class NOFRAME {
+}
+
+class IFRAME extends FRAME {
+}
+

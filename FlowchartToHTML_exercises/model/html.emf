@@ -1,0 +1,290 @@
+@namespace(uri="HTML", prefix="html")
+package HTML;
+
+class HTML {
+	!ordered val HEAD#html head;
+	!ordered val BODY#html body;
+}
+
+class HTMLElement {
+	!unique !ordered attr String value;
+	!ordered val HTMLElement[*] children;
+}
+
+class HEAD extends HTMLElement {
+	!ordered val HEADElement[*]#head headElements;
+	!ordered ref HTML#head html;
+}
+
+abstract class HEADElement extends HTMLElement {
+	!ordered ref HEAD#headElements head;
+}
+
+class LINK extends HEADElement {
+	!unique !ordered attr String rel;
+	!unique !ordered attr String title;
+	!unique !ordered attr String ahref;
+	!unique !ordered attr String type;
+}
+
+class TITLE extends HEADElement {
+}
+
+class BODY extends HTMLElement {
+	!unique !ordered attr String background;
+	!unique !ordered attr String bgcolor;
+	!unique !ordered attr String text;
+	!unique !ordered attr String link;
+	!unique !ordered attr String alink;
+	!unique !ordered attr String vlink;
+	!ordered val BODYElement[*] bodyElements;
+	!ordered ref HTML#body html;
+}
+
+abstract class BODYElement extends HTMLElement {
+}
+
+class H1 extends BODYElement {
+}
+
+class H2 extends BODYElement {
+}
+
+class H3 extends BODYElement {
+}
+
+class H4 extends BODYElement {
+}
+
+class EM extends BODYElement {
+}
+
+class STRONG extends BODYElement {
+}
+
+class B extends BODYElement {
+}
+
+class I extends BODYElement {
+}
+
+class TT extends BODYElement {
+}
+
+class PRE extends BODYElement {
+}
+
+class BIG extends BODYElement {
+}
+
+class SMALL extends BODYElement {
+}
+
+class SUB extends BODYElement {
+}
+
+class SUP extends BODYElement {
+}
+
+class STRIKE extends BODYElement {
+}
+
+class FONT extends BODYElement {
+	!unique !ordered attr String color;
+	!unique !ordered attr String face;
+	!unique !ordered attr String size;
+}
+
+class IMG extends BODYElement {
+	!unique !ordered attr String src;
+	!unique !ordered attr String width;
+	!unique !ordered attr String height;
+	!unique !ordered attr String alt;
+	!unique !ordered attr String align;
+	!unique !ordered attr String vspace;
+	!unique !ordered attr String hspace;
+	!unique !ordered attr String ismap;
+	!unique !ordered attr String usemap;
+	!unique !ordered attr String border;
+}
+
+class BR extends BODYElement {
+	!unique !ordered attr String clear;
+}
+
+class MAP extends BODYElement {
+}
+
+class AREA extends BODYElement {
+	!unique !ordered attr String shape;
+	!unique !ordered attr String coords;
+	!unique !ordered attr String ahref;
+}
+
+class STYLE extends BODYElement {
+}
+
+class EMBED extends BODYElement {
+	!unique !ordered attr String src;
+	!unique !ordered attr String width;
+	!unique !ordered attr String height;
+	!unique !ordered attr String align;
+	!unique !ordered attr String vspace;
+	!unique !ordered attr String hspace;
+	!unique !ordered attr String border;
+}
+
+class NOEMBED extends BODYElement {
+}
+
+class SPAN extends BODYElement {
+	!unique !ordered attr String style;
+}
+
+class A extends BODYElement {
+	!unique !ordered attr String ahref;
+	!unique !ordered attr String name;
+	!unique !ordered attr String ~id;
+}
+
+class DIV extends BODYElement {
+	!unique !ordered attr String align;
+}
+
+class P extends BODYElement {
+}
+
+abstract class TABLEElement extends BODYElement {
+	!unique !ordered attr String bgcolor;
+	!unique !ordered attr String background;
+}
+
+class TABLE extends TABLEElement {
+	!unique !ordered attr String border;
+	!unique !ordered attr String width;
+	!unique !ordered attr String cellspacing;
+	!unique !ordered attr String cellpadding;
+	!ordered val TR[*]#table trs;
+}
+
+class TR extends TABLEElement {
+	!unique !ordered attr String valign;
+	!unique !ordered attr String align;
+	!ordered ref TABLE#trs table;
+	!ordered val TD[*]#tr tds;
+}
+
+class TD extends TABLEElement {
+	!unique !ordered attr String colspan;
+	!unique !ordered attr String rowspan;
+	!unique !ordered attr String valign;
+	!unique !ordered attr String align;
+	!unique !ordered attr String width;
+	!ordered ref TR#tds tr;
+}
+
+class TH extends TD {
+}
+
+class FORM {
+	!unique !ordered attr String action;
+	!unique !ordered attr String method;
+}
+
+class INPUT {
+	!unique !ordered attr String align;
+	!unique !ordered attr String maxlength;
+	!unique !ordered attr String size;
+	!unique !ordered attr String checked;
+	!unique !ordered attr String src;
+	!unique !ordered attr String inputValue;
+	!unique !ordered attr String name;
+	!unique !ordered attr String type;
+}
+
+class TEXTAREA {
+	!unique !ordered attr String name;
+	!unique !ordered attr String rows;
+	!unique !ordered attr String cols;
+}
+
+class SELECT {
+	!unique !ordered attr String multiple;
+	!unique !ordered attr String size;
+	!unique !ordered attr String name;
+}
+
+class OPTION {
+	!unique !ordered attr String selected;
+	!unique !ordered attr String optionValue;
+}
+
+abstract class ListElement {
+	!unique !ordered attr String type;
+}
+
+class OL extends ListElement {
+	!unique !ordered attr String start;
+}
+
+class UL extends ListElement {
+}
+
+class LI extends ListElement {
+	!unique !ordered attr String liValue;
+}
+
+class DL {
+}
+
+class DT {
+}
+
+class DD {
+}
+
+class APPLET {
+	!unique !ordered attr String applet;
+	!unique !ordered attr String ~class;
+	!unique !ordered attr String src;
+	!unique !ordered attr String align;
+	!unique !ordered attr String width;
+	!unique !ordered attr String height;
+}
+
+class PARAM {
+	!unique !ordered attr String name;
+	!unique !ordered attr String paramValue;
+}
+
+class OBJECT {
+	!unique !ordered attr String classid;
+	!unique !ordered attr String ~id;
+	!unique !ordered attr String data;
+	!unique !ordered attr String type;
+	!unique !ordered attr String standby;
+}
+
+class FRAMESET {
+	!unique !ordered attr String rows;
+	!unique !ordered attr String cols;
+	!unique !ordered attr String framespacing;
+	!unique !ordered attr String frameborder;
+	!unique !ordered attr String border;
+}
+
+class FRAME {
+	!unique !ordered attr String src;
+	!unique !ordered attr String name;
+	!unique !ordered attr String marginwidth;
+	!unique !ordered attr String marginheight;
+	!unique !ordered attr String scrolling;
+	!unique !ordered attr String noresize;
+}
+
+class NOFRAME {
+}
+
+class IFRAME extends FRAME {
+}
+
